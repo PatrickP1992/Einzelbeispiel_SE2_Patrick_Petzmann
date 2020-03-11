@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Einzelbeispiel SE2</string>
     <string name="TextView_AufforderungZurEingabe">Gib bitte deine Matrikelnummer ein:</string>
-    <string name="TextView_Antwort">Antwort vom Server</string>
+    <string name="TextView_Antwort">Antwort vom Server:</string>
     <string name="Button_Abschicken">Abschicken</string>
     <string name="Button_Berechnen">Berechnen</string>
     <string name="Hint_Matrikelnummer">Matrikelnummer</string>
