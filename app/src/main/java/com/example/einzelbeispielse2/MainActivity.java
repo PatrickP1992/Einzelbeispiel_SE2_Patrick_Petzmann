@@ -2,6 +2,7 @@ package com.example.einzelbeispielse2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,5 +44,16 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Fehler", "InteruptedException");
         }
 
+    }
+
+    public void berechnen(View view)
+    {
+        Intent myIntent = new Intent(this, BerechnenActivity.class);
+
+        matrikelnummer = eingabe.getText().toString();
+
+        myIntent.putExtra("MATRIKELNUMMER", matrikelnummer);
+
+        startActivity(myIntent);
     }
 }

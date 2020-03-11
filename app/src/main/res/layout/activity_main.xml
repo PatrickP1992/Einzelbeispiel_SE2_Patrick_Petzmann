@@ -104,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:onClick="berechnen"
         android:text="@string/Button_Berechnen"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_Abschicken2"
         app:layout_constraintEnd_toEndOf="parent" />
