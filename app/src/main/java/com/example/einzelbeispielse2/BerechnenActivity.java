@@ -27,9 +27,19 @@ public class BerechnenActivity extends AppCompatActivity {
         }
         else
         {
+            AlternierendeQuersumme c = new AlternierendeQuersumme(matrikelnummer);
             eingabe.setText(matrikelnummer);
 
+            int ergebnis = c.berechne();
 
+            if (c.istGerade(ergebnis))
+            {
+                ausgabe.setText("Die alternierende Quersumme ist "+ergebnis+ " und ist gerade");
+            }
+            else
+            {
+                ausgabe.setText("Die alternierende Quersumme ist "+ergebnis+ " und ist ungerade");
+            }
         }
     }
 }
