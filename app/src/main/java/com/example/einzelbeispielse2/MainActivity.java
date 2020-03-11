@@ -3,9 +3,12 @@ package com.example.einzelbeispielse2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
         matrikelnummer = eingabe.getText().toString();
         Netzwerkaufruf netzwerkaufruf = new Netzwerkaufruf(matrikelnummer, ip, port);
 
-        netzwerkaufruf.execute();
+        try {
+            antwort.setText(netzwerkaufruf.execute().get());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            Log.e("Fehler", "ExecutionException");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Log.e("Fehler", "InteruptedException");
+        }
 
-        antwort.setText(netzwerkaufruf.getOutputNachricht());
     }
 }

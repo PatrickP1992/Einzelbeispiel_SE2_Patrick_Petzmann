@@ -1,8 +1,10 @@
 package com.example.einzelbeispielse2;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -14,7 +16,7 @@ import java.io.StringReader;
 import java.net.Socket;
 import java.nio.charset.Charset;
 
-public class Netzwerkaufruf extends AsyncTask {
+public class Netzwerkaufruf extends AsyncTask<String, Integer, String> {
 
     private String message;
     private String outputNachricht;
@@ -31,8 +33,13 @@ public class Netzwerkaufruf extends AsyncTask {
         return outputNachricht;
     }
 
+    public void setOutputNachricht(String outputNachricht) {
+        this.outputNachricht = outputNachricht;
+    }
+
+    @SuppressLint("WrongThread")
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected String doInBackground(String... params) {
         try {
             //String message = strings[0];
             //String ip = strings[1];
@@ -51,6 +58,8 @@ public class Netzwerkaufruf extends AsyncTask {
 
             outputNachricht = inFromServer.readLine();
 
+
+
             Log.d("Message", outputNachricht);
 
             clientSocket.close();
@@ -59,6 +68,6 @@ public class Netzwerkaufruf extends AsyncTask {
             e.printStackTrace();
             Log.e("Fehler", "Exception");
         }
-        return null;
+        return outputNachricht;
     }
 }
